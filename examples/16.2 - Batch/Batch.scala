@@ -6,8 +6,8 @@ class BatchUploadActor()(using cc: castor.Context) extends castor.BatchActor[Str
   def runBatch(msgs: Seq[String]) =
     println("runBatch")
     val res = requests.post("https://httpbin.org/post", data = msgs.mkString)
-    responseCount += 1
     println(s"response ${res.statusCode} " + ujson.read(res)("data"))
+    responseCount += 1
 
 given cc: castor.Context.Test()
 val batchUploader = BatchUploadActor()

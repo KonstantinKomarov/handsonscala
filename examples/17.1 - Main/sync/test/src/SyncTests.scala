@@ -11,6 +11,9 @@ object SyncTests extends TestSuite:
       os.write(src / "folder1/nested/world.txt", "world", createFolders = true)
 
       println("FIRST SYNC")
+      println(s"${os.pwd}")
+      println(s"${src.subRelativeTo(os.pwd)}")
+      println(s"${dest.subRelativeTo(os.pwd)}")
       Sync.main(src.toString, dest.toString)
 
       println("FIRST VALIDATION")
