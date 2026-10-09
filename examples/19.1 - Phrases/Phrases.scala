@@ -1,10 +1,11 @@
-//| mvnDeps:
-//| - com.lihaoyi::fastparse:3.1.1
+//> using dep "com.lihaoyi::fastparse:3.1.1"
+
 enum Phrase:
   case Word(s: String)
   case Pair(lhs: Phrase, rhs: Phrase)
 
 import fastparse.*, NoWhitespace.*
+
 def prefix[T: P] = P( "hello" | "goodbye" ).!.map(Phrase.Word(_))
 def suffix[T: P] = P( "world" | "seattle" ).!.map(Phrase.Word(_))
 def ws[T: P] = P( " ".rep(1) )
